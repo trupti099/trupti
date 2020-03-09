@@ -1,0 +1,10 @@
+
+<div *ngIf="role === 'admin'">
+    <app-dashboard-super-admin></app-dashboard-super-admin>
+</div>
+<div *ngIf="role === 'psp'">
+    <app-dashboard-psp></app-dashboard-psp>
+</div>
+<div *ngIf="role === 'pos'">
+    <app-dashboard-pos></app-dashboard-pos>
+</div>

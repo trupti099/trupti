@@ -1,0 +1,129 @@
+<div class="breadcrumb justify-content-between mb-2">
+    <h4>Customer</h4>
+    <!-- <a href="#" class="btn btn-primary btn-xs general-btn" routerLink="add-pos" ngbPopover="Add POS"
+        triggers="mouseenter:mouseleave" placement="left"><span class="las la-plus la-1-5x"></span></a> -->
+
+</div>
+<div class="separator-breadcrumb border-top"></div>
+<div class="card separator-breadcrumb-custom">
+    <div class="card-body py-2">
+        <div class="example-header px-0 py-0 d-flex justify-content-end">
+            <mat-form-field>
+                <div class="d-flex">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    <i class="search-icon text-muted i-Magnifi-Glass1"></i>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="example-container mat-elevation-z8 shadow-0 table-responsive">
+            <mat-table [dataSource]="dataSource" matSort role="grid" style="width: 100%;">
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                </ng-container>
+
+                <!-- Progress Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="city">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> City</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="state">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> State </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.state}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="country">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> country </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.country}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>email</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="phoneNo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Phone no </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.phoneNo}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="customerType">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Customer Type </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.customerType}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="identityProof">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> identityProof </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.identityProof}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="dob">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> dob </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.dob}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="pos">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> POS </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.pos}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="psp">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> PSP </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.psp}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <!-- <a class="btn btn-secondary btn-xs general-btn ripple m-1" (click)="open(modalLong)"
+                            ngbPopover="Edit" triggers="mouseenter:mouseleave" placement="top"><span
+                                class="las la-pen la-1-5x"></span></a> -->
+                        <a class="btn btn-primary btn-xs general-btn ripple m-1" ngbPopover="Delete"
+                            triggers="mouseenter:mouseleave" placement="top" (click)="confirm(modalConfirm)"><span
+                                class="las la-trash la-1-5x"></span></a> </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+            </mat-paginator>
+        </div>
+    </div>
+</div>
+<ng-template #modalConfirm let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Customer deletion</h4>
+        <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true" class="las la-times la-1-5x secondry"></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete <span class="text-primary"><strong>"Test"</strong></span> Customer?</p>
+        <p>All information associated to this Customer will be permanently deleted.<br>
+            <span class="text-danger">This operation can not be undone.</span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-rounded mr-2"
+            (click)="modal.dismiss('cancel')">Cancel</button>
+        <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close('Ok')">Ok</button>
+    </div>
+</ng-template>

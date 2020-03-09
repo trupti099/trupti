@@ -1,0 +1,159 @@
+<div class="breadcrumb justify-content-between mb-2">
+    <h4>Edit PSP</h4>
+</div>
+
+
+<div class="separator-breadcrumb border-top"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <div class="card-body">
+                <!-- <div class="card-title mb-3">Form Inputs</div> -->
+                <form [formGroup]="pspEditForm" (ngSubmit)="onSubmit()">
+
+                    <div class="row">
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Name</label>
+
+                            <input type="text" formControlName="name" class="form-control" id="name"
+                                placeholder="Enter name of PSP" [ngClass]="{'is-invalid': submitted && f.name.errors ||
+                            f.name.invalid}" />
+                            <!-- <div *ngIf="(f.name.touched || submitted && f.name.errors)"
+                                class="invalid-feedback">
+                                <div *ngIf="pspEditForm.controls.name.invalid">
+                                    <div *ngIf="f.name.errors.required">Name is required</div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Region</label>
+                            <select class="custom-select" formControlName="region" [ngClass]="{ 'is-invalid': submitted && f.region.errors ||
+                            f.region.touched && f.region.invalid}">
+                                <option  disabled selected>Select region</option>
+                                <option value="Africa">Africa</option>
+                                <option value="Asia">Asia</option>
+                                <option value="Australia">Australia</option>
+                               
+                            </select>
+                            <div *ngIf="(f.region.touched || submitted && f.region.errors)" class="invalid-feedback">
+                                <div *ngIf="pspEditForm.controls.region.invalid">
+                                    <div *ngIf="f.region.errors.required">Region is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Country</label>
+                            <select class="custom-select" formControlName="country" (change)="onChangeCountry($event.target.value)"
+                            [ngClass]="{'is-invalid': submitted && f.country.errors ||
+                            f.country.touched && f.country.invalid}" >
+                                <option  value="select country" disabled selected>Select country</option>
+                            <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+                            </select>
+                            <div *ngIf="(f.country.touched || submitted && f.country.errors)" class="invalid-feedback">
+                                <div *ngIf="pspEditForm.controls.country.invalid">
+                                    <div *ngIf="f.country.errors.required">Country is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>State</label>
+                            <select class="custom-select" formControlName="state" (change)="onChangeState($event.target.value)"
+                                [ngClass]="{'is-invalid': submitted && f.state.errors || f.state.touched && f.state.invalid}">
+                                <option disabled selected value="">Select state</option>
+                                <option *ngFor="let state of states" [value]="state.id"><label>{{state.name}}</label></option>
+                            </select>
+                            <div *ngIf="(f.state.touched || submitted && f.state.errors)" class="invalid-feedback">
+                                <div *ngIf="pspEditForm.controls.state.invalid">
+                                    <div *ngIf="f.state.errors.required">State is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>City</label>
+                            <select class="custom-select" formControlName="city"
+                                [ngClass]="{'is-invalid': submitted && f.city.errors || f.city.touched && f.city.invalid}">
+                                <option disabled selected value="">Select city</option>
+                                <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                            </select>
+                            <div *ngIf="(f.city.touched || submitted && f.city.errors)" class="invalid-feedback">
+                                <div *ngIf="pspEditForm.controls.city.invalid">
+                                    <div *ngIf="f.city.errors.required">City is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Address</label>
+                            <textarea formControlName="address" id="address" rows="1" class="form-control"
+                                placeholder="Enter address"
+                                [ngClass]="{'is-invalid': submitted && f.address.errors || f.address.touched && f.address.invalid}"></textarea>
+                            <div *ngIf="(f.address.touched || submitted && f.address.errors)" class="invalid-feedback">
+                                <div *ngIf="pspEditForm.controls.address.invalid">
+                                    <div *ngIf="f.address.errors.required">Address is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Email</label>
+                            <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="example@gmail.com"
+                                [ngClass]="{'is-invalid': submitted && f.email.errors || f.email.touched && f.email.invalid }">
+                            <div *ngIf="(f.email.touched || submitted && f.email.errors)" class="invalid-feedback">
+                                <div *ngIf="pspEditForm.controls.email.invalid">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                    <div *ngIf="f.email.errors.email">Email must be a valid format</div>
+                                    <!-- <div *ngIf="f.email.errors.pattern">Email must be a valid </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Contact</label>
+                            <input class="form-control" formControlName="phoneNo" id="phoneNo" placeholder="9101234567"
+                                [ngClass]="{'is-invalid': submitted && f.phoneNo.errors || f.phoneNo.touched && f.phoneNo.invalid}">
+                            <div *ngIf="(f.phoneNo.touched || submitted && f.phoneNo.errors)" class="invalid-feedback">
+                                <div *ngIf="pspEditForm.controls.phoneNo.invalid">
+                                    <div *ngIf="f.phoneNo.errors.required">Phone number is required</div>
+                                    <div *ngIf="f.phoneNo.errors.pattern">Phone number must be 10 digits</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Website URL</label>
+                            <input class="form-control" formControlName="websiteURL" id="websiteURL"
+                                placeholder="https://www.example.com"
+                                [ngClass]="{'is-invalid': submitted && f.websiteURL.errors || f.websiteURL.touched && f.websiteURL.invalid}">
+                            <div *ngIf="(f.websiteURL.touched || submitted && f.websiteURL.errors)" class="invalid-feedback">
+                                <div *ngIf="pspEditForm.controls.websiteURL.invalid">
+                                    <div *ngIf="f.websiteURL.errors.required">Website URL is required</div>
+                                    <div *ngIf="f.websiteURL.errors.pattern">Enter valid URL</div>
+                                </div>  
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Credit</label>
+                            <input class="form-control" formControlName="credit" id="credit"
+                                placeholder="Enter credit amount"
+                                [ngClass]="{'is-invalid': submitted && f.credit.errors || f.credit.touched && f.credit.invalid}">
+                        <div *ngIf="(f.credit.touched || submitted && f.credit.errors)" class="invalid-feedback">
+                            <div *ngIf="pspEditForm.controls.credit.invalid">
+                                <div *ngIf="f.credit.errors.required">Credit amount is required</div>
+                                <div *ngIf="f.credit.errors.min">Minimum credit amount is 500 ₹ </div>
+                                <div *ngIf="f.credit.errors.max">Maximum credit amount is 50,000 ₹</div>
+                                <div *ngIf="f.credit.errors.pattern">Only digits allow</div>
+                            </div>
+                        </div>
+                        </div>
+   
+                        <div class="col-md-12 d-flex justify-content-end">
+                            <button class="btn btn-secondary btn-rounded mr-2" type="reset"
+                                (click)="onReset()">Reset</button>
+                            <button class="btn btn-primary btn-rounded" type="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

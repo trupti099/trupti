@@ -1,0 +1,42 @@
+
+<div class="card separator-breadcrumb-custom shadow-0">
+    <div class="card-body py-2">
+        <div class="example-container mat-elevation-z8 shadow-0 table-responsive" style="min-height: 300px;">
+            <mat-table [dataSource]="dataSource" matSort role="grid" style="width: 100%;">
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="position">
+                </ng-container>
+
+                <!-- Id Column -->
+                <ng-container matColumnDef="parcelid">
+                    <mat-header-cell *matHeaderCellDef>Id </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.parcelid}} </mat-cell>
+                </ng-container>
+
+                <!-- PSP Column -->
+                <ng-container matColumnDef="psp">
+                    <mat-header-cell *matHeaderCellDef> PSP </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.psp}} </mat-cell>
+                </ng-container>           
+                
+                <!-- POS Column -->
+                <ng-container matColumnDef="pos">
+                    <mat-header-cell *matHeaderCellDef> POS </mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.pos}}</mat-cell>
+                </ng-container>  
+                
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.status}}</mat-cell>
+                </ng-container>  
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <!-- <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row> -->
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+        </div>
+    </div>
+</div>

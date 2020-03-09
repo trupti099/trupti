@@ -1,0 +1,79 @@
+<div class="breadcrumb justify-content-between mb-2">
+    <h4>Support Ticket</h4>
+
+
+</div>
+
+<div class="separator-breadcrumb border-top"></div>
+
+<div class="card separator-breadcrumb-custom">
+    <div class="card-body py-2">
+        <div class="example-header px-0 py-0 d-flex justify-content-end">
+            <mat-form-field>
+                <div class="d-flex">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    <i class="search-icon text-muted i-Magnifi-Glass1"></i>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="example-container mat-elevation-z8 shadow-0 table-responsive">
+            <mat-table [dataSource]="dataSource" matSort role="grid" style="width: 100%;">
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                </ng-container>
+
+                <!-- Progress Column -->
+                <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="pos">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> POS </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.pos}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="psp">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> PSP </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.psp}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="customerName">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.customerName}} </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="customerPhoneNo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Phone No. </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.customerPhoneNo}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+                </ng-container>
+
+
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+            </mat-paginator>
+
+        </div>
+    </div>
+
+</div>

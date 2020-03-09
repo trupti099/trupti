@@ -1,0 +1,120 @@
+<div class="breadcrumb justify-content-between mb-2">
+    <h4>Delivery boys</h4>
+
+    <!-- <a href="#" routerLink="/pos-accounts/add-pos" class="btn btn-outline-primary ripple m-1">Add</a> -->
+    <a class="btn btn-primary btn-xs general-btn" [routerLink]="['./add-delivery-boy']"   ngbPopover="Add deliveryboy" triggers="mouseenter:mouseleave"
+        placement="left"><span class="las la-plus la-1-5x"></span></a>
+</div>
+
+<div class="separator-breadcrumb border-top"></div>
+
+<div class="card separator-breadcrumb-custom">
+    <div class="card-body py-2">
+        <div class="example-header px-0 py-0 d-flex justify-content-end">
+            <mat-form-field>
+                <div class="d-flex">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    <i class="search-icon text-muted i-Magnifi-Glass1"></i>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="example-container mat-elevation-z8 shadow-0 table-responsive">
+            <mat-table [dataSource]="dataSource" matSort role="grid" style="width: 100%;">
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="position">
+                </ng-container>
+
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                </ng-container>
+
+                <!-- Profile Column -->
+                <ng-container matColumnDef="profile">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Profile </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> <img alt="" class="avatar" src="./assets/images/faces/10.jpg">
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Name </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                </ng-container>
+
+                <!-- city Column -->
+                <ng-container matColumnDef="number">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Contact no. </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.number}} </mat-cell>
+                </ng-container>
+
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+                    <mat-cell *matCellDef="let row"><span class="email-field"> {{row.email}} </span> </mat-cell>
+                </ng-container>
+
+                <!-- status Column -->
+                <ng-container matColumnDef="role">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Role </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.role}} </mat-cell>
+                </ng-container>
+
+                <!-- action Column -->
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Action </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <a class="btn btn-secondary btn-xs general-btn ripple m-1" (click)="open(modalLong)"
+                            ngbPopover="Edit" triggers="mouseenter:mouseleave" placement="top"><span
+                                class="las la-pen la-1-5x"></span></a>
+                        <a class="btn btn-primary btn-xs general-btn ripple m-1" (click)="confirm(modalConfirm)"
+                            ngbPopover="Delete" triggers="mouseenter:mouseleave" placement="top"><span
+                                class="las la-trash la-1-5x"></span></a>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <!-- <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row> -->
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+
+            <mat-paginator id="paginator" #paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons
+                class="mat-paginator-sticky"></mat-paginator>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Side Form Modal Start -->
+<ng-template #modalLong let-modal>
+    
+        <app-edit-deliveryboy></app-edit-deliveryboy>
+   
+</ng-template>
+<!-- Side Form Modal Over -->
+
+<!-- Delete Modal Start-->
+<ng-template #modalConfirm let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Deliveryboy deletion</h4>
+        <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true" class="las la-times la-1-5x secondry"></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete <span class="text-primary"><strong>"Kuldip Seth"</strong></span>?</p>
+        <p>All information associated to this delivery boy will be permanently deleted.<br>
+            <span class="text-danger">This operation can not be undone.</span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-rounded mr-2"
+            (click)="modal.dismiss('cancel')">Cancel</button>
+        <button type="button" ngbAutofocus class="btn btn-primary btn-rounded" (click)="modal.close('Ok')">Ok</button>
+    </div>
+</ng-template>
+<!-- Delete Modal Over-->

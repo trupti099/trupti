@@ -1,0 +1,127 @@
+<div class="">
+    <div class="breadcrumb mb-2">
+        <h1>Super Admin Dashboard</h1>
+        <!-- <ul>
+            <li><a href="">Dashboard</a></li>
+            <li>Version 1</li>
+        </ul> -->
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="row">
+        <!-- ICON BG -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Administrator"></i>
+                    <div class="content" style="max-width: 120px;">
+                        <p class="text-muted mt-2 mb-0">PSP</p>
+                        <p class="text-primary text-24 line-height-1 mb-2">150</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Boy"></i>
+                    <div class="content" style="max-width: 120px;">
+                        <p class="text-muted mt-2 mb-0">POS</p>
+                        <p class="text-primary text-24 line-height-1 mb-2">1300</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Ticket"></i>
+                    <div class="content" style="max-width: 120px;">
+                        <p class="text-muted mt-2 mb-0">Support Ticket</p>
+                        <p class="text-primary text-24 line-height-1 mb-2">268</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Business-Man"></i>
+                    <div class="content" style="max-width: 120px;">
+                        <p class="text-muted mt-2 mb-0">Serviced Customer</p>
+                        <p class="text-primary text-24 line-height-1 mb-2">25750</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Money-2"></i>
+                    <div class="content" style="max-width: 120px;">
+                        <p class="text-muted mt-2 mb-0">Account Credit</p>
+                        <p class="text-primary text-24 line-height-1 mb-2">15000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title  mb-0">Recent registered PSP</div>
+                    <app-recent-registered-psp></app-recent-registered-psp>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title  mb-0">Recent registered POS</div>
+                    <app-recent-registered-pos></app-recent-registered-pos>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title  mb-0">Recent raised ticket</div>
+                    <app-recent-raised-tickets></app-recent-raised-tickets>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Charts -->
+    <div class="row">
+        <!-- <div class="col-lg-8 col-md-12">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="card-title">This Year Sales</div>
+                <div echarts [options]="salesChartBar" [autoResize]="true" style="height: 300px;"></div>
+            </div>
+        </div>
+    </div> -->
+        <div class="col-lg-6 col-sm-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title">Region wise PSP</div>
+                    <div echarts [options]="RegionPSPChartPie" [autoResize]="true" style="height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title">Region wise POS</div>
+                    <div echarts [options]="RegionPOSChartPie" [autoResize]="true" style="height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="breadcrumb justify-content-between mb-2">
+    <h4>Parcels</h4>
+</div>
+<div class="separator-breadcrumb border-top"></div>
+<div class="card separator-breadcrumb-custom">
+    <div class="card-body py-2">
+        <div class="example-header px-0 py-0 d-flex justify-content-end">
+            <mat-form-field>
+                <div class="d-flex">
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    <i class="search-icon text-muted i-Magnifi-Glass1"></i>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="example-container mat-elevation-z8 shadow-0 table-responsive">
+            <mat-table [dataSource]="dataSource" matSort role="grid" style="width: 100%;">
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                </ng-container>
+
+                <!-- Progress Column -->
+                <ng-container matColumnDef="barcodeId" class="ml-1">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Consultantment No.</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.barcodeId}}</mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="senderName">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Sender Name </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.senderName}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="reciverName">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Reciver Name </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.reciverName}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="senderPhoneNO">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Sender Phone No </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.senderPhoneNO}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="reciverPhoneNo">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Reciver Phone No</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.reciverPhoneNo}} </mat-cell>
+                </ng-container>
+
+
+                <ng-container matColumnDef="senderAddress">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Sender Address </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.senderAddress}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="reciverAddress">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        Reciver Address </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.reciverAddress}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="psp">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> PSP </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.psp}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="pos">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> POS </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.pos}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="parcelType">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Parcel Type </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.parcelType}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="packageCode">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> PackageCode </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.packageCode}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.status}} </mat-cell>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Action </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <a class="btn btn-secondary btn-xs general-btn ripple m-1" (click)="open(modalLong)"
+                            ngbPopover="Edit" triggers="mouseenter:mouseleave" placement="top"><span
+                                class="las la-pen la-1-5x"></span></a>
+                        <a class="btn btn-primary btn-xs general-btn ripple m-1" ngbPopover="Delete"
+                            triggers="mouseenter:mouseleave" placement="top"><span
+                                class="las la-trash la-1-5x"></span></a>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+            </mat-paginator>
+
+        </div>
+    </div>
+
+</div>

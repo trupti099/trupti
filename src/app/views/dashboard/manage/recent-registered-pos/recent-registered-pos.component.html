@@ -1,0 +1,35 @@
+<div class="card separator-breadcrumb-custom shadow-0">
+    <div class="card-body py-2">
+        <div class="example-container mat-elevation-z8 shadow-0 table-responsive" style="min-height: 300px;">
+            <mat-table [dataSource]="dataSource" matSort role="grid" style="width: 100%;">
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="position">
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef>Name </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                </ng-container>
+
+                <!-- city Column -->
+                <ng-container matColumnDef="city">
+                    <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
+                </ng-container>           
+                
+                <!-- Address Column -->
+                <ng-container matColumnDef="address">
+                    <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+                    <mat-cell *matCellDef="let row"><span class="address-field" style="width: auto;">{{row.address}} </span> </mat-cell>
+                </ng-container>  
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <!-- <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row> -->
+                <mat-row *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+        </div>
+    </div>
+</div>

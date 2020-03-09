@@ -1,0 +1,189 @@
+<div class="breadcrumb mb-2">
+    <h4>Add Delivery Boy</h4>
+</div>
+<div class="separator-breadcrumb border-top"></div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4 animated fadeIn">
+            <div class="card-body">
+                <!-- <div class="card-title mb-3">Form Inputs</div> -->
+                <form [formGroup]="addDeliveryBoy" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-md-4 form-group mb-4">
+                            <label>First Name</label>
+                            <input type="text" formControlName="firstname" class="form-control" id="firstname"
+                                placeholder="Enter firstName"
+                                [ngClass]="{'is-invalid': submitted && form.firstname.errors || form.firstname.touched && form.firstname.invalid}" />
+                            <div *ngIf="(form.firstname.touched || submitted && form.firstname.errors)"
+                                class="invalid-feedback">
+                                <div *ngIf="addDeliveryBoy.controls.firstname.invalid">
+                                    <div *ngIf="form.firstname.errors.required">First name is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Last name</label>
+                            <input type="text" formControlName="lastname" class="form-control" id="lastname"
+                                placeholder="Enter Last name"
+                                [ngClass]="{'is-invalid':submitted && form.lastname.errors ||  form.lastname.touched && form.lastname.invalid}">
+                            <div *ngIf="(form.lastname.touched || submitted && form.lastname.errors)"
+                                class="invalid-feedback">
+                                <div *ngIf="addDeliveryBoy.controls.lastname.invalid">
+                                    <div *ngIf="form.lastname.errors.required">Last name is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Email</label>
+                            <input type="email" formControlName="email" class="form-control" id="email"
+                                aria-describedby="emailHelp" placeholder="example@gmail.com"
+                                [ngClass]="{'is-invalid':submitted && form.email.errors || form.email.touched && form.email.invalid}">
+                            <div *ngIf="(form.email.touched || submitted && form.email.errors)" class="invalid-feedback">
+                                <div *ngIf="addDeliveryBoy.controls.email.invalid">
+                                    <div *ngIf="form.email.errors.required">Email is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Country</label>
+                            <select class="custom-select" formControlName="country" (change)="onChangeCountry($event.target.value)"
+                            [ngClass]="{'is-invalid': submitted && form.country.errors ||
+                            form.country.touched && form.country.invalid}" >
+                                <option disabled selected value="">Select country</option>
+                            <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
+                            </select>
+                            <div *ngIf="(form.country.touched || submitted && form.country.errors)" class="invalid-feedback">
+                                <div *ngIf="addDeliveryBoy.controls.country.invalid">
+                                    <div *ngIf="form.country.errors.required">Country is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>State</label>
+                            <select class="custom-select" formControlName="state" (change)="onChangeState($event.target.value)"
+                                [ngClass]="{'is-invalid': submitted && form.state.errors || form.state.touched && form.state.invalid}">
+                                <option disabled selected value="">Select state</option>
+                                <option *ngFor="let state of states" [value]="state.id"><label>{{state.name}}</label></option>
+                            </select>
+                            <div *ngIf="(form.state.touched || submitted && form.state.errors)" class="invalid-feedback">
+                                <div *ngIf="addDeliveryBoy.controls.state.invalid">
+                                    <div *ngIf="form.state.errors.required">State is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>City</label>
+                            <select class="custom-select" formControlName="city"
+                                [ngClass]="{'is-invalid': submitted && form.city.errors || form.city.touched && form.city.invalid}">
+                                <option disabled selected value="">Select city</option>
+                                <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                            </select>
+                            <div *ngIf="(form.city.touched || submitted && form.city.errors)" class="invalid-feedback">
+                                <div *ngIf="addDeliveryBoy.controls.city.invalid">
+                                    <div *ngIf="form.city.errors.required">City is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="col-md-4 form-group mb-4">
+                                                    <label>Password</label>
+                                                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                                                </div>
+                                                <div class="col-md-4 form-group mb-4">
+                                                    <label>Confirm password</label>
+                                                    <input type="password" class="form-control" id="c-password"
+                                                        placeholder="Enter confirm password">
+                                                </div> -->
+                    
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Contact</label>
+                            <input class="form-control" formControlName="contact" id="contact" placeholder="9101234567"
+                                [ngClass]="{'is-invalid':submitted && form.contact.errors || form.contact.touched && form.contact.invalid}">
+                            <div *ngIf="(form.contact.touched || submitted && form.contact.errors)" class="invalid-feedback">
+                                <div *ngIf="addDeliveryBoy.controls.contact.invalid">
+                                    <div *ngIf="form.contact.errors.required">Contact is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Address</label>
+                            <textarea formControlName="address" id="address" rows="1" class="form-control"
+                                placeholder="Enter address"
+                                [ngClass]="{'is-invalid': submitted && form.address.errors || form.address.touched && form.address.invalid}"></textarea>
+                            <div *ngIf="(form.address.touched || submitted && form.address.errors)" class="invalid-feedback">
+                                <div *ngIf="addDeliveryBoy.controls.address.invalid">
+                                    <div *ngIf="form.address.errors.required">Address is required</div>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- <div class="col-md-4 formorm-group mb-4">
+                                <label>Proformile</label>
+                                <fileDroppa formControlName="image"
+                                    [ngClass]="{'is-invalid':submitted && formimage.errors || formimage.touched && form.image.invalid}">
+                                </fileDroppa>
+                                <div *ngIf="(form.image.touched || submitted && form.image.errors)" class="invalid-feedback">
+                                    <div *ngIf="addDeliveryBoy.controls.image.invalid">
+                                        <div *ngIf="form.image.errors.required">Image is required</div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-md-4 form-group mb-4">
+                                <label>Role</label>
+                                <select class="custom-select" formControlName="role"
+                                    [ngClass]="{'is-invalid':submitted && form.role.errors || form.role.touched && form.role.invalid}">
+                                    <option  value="Select role" selected disabled >Select role</option>
+                                    <option value="Account manager">Account manager</option>
+                                    <option value="Delivery boy" >Delivery boy</option>
+                                </select>
+                                <div *ngIf="(form.role.touched || submitted && form.role.errors)" class="invalid-feedback">
+                                    <div *ngIf="addDeliveryBoy.controls.role.invalid">
+                                        <div *ngIf="form.role.errors.required">Role is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label for="picker1">Birth date</label>
+                            <div class="input-group">
+                                <input id="picker1" class="form-control" placeholder="yyyy-mm-dd"
+                                    formControlName="datePicker" ngbDatepicker #datePicker="ngbDatepicker"
+                                    [ngClass]="{'is-invalid':submitted && form.datePicker.errors || form.datePicker.touched && form.datePicker.invalid}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary date-icon" (click)="datePicker.toggle()"
+                                        type="button">
+                                        <i class="icon-regular i-Calendar-4"></i>
+                                    </button>
+                                </div>
+                                <div *ngIf="(form.datePicker.touched || submitted && form.datePicker.errors)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="addDeliveryBoy.controls.datePicker.invalid">
+                                        <div *ngIf="form.datePicker.errors.required">Date is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-8  form-group mb-4">
+                            <label>Profile </label><br><br> -->
+                            <!-- <fileDroppa name="image" [beforeAddFile]="beforeAddFile" (change)="uploadFile($event.target.files)"
+                                (filesUpdated)="filesUpdated($event)" (fileUploaded)="fileUploaded($event)">
+                            </fileDroppa> -->
+                            <!-- <input type="file" name="profile" id="profile" (change)="onFileSelected($event)"/>
+                            
+                            <div *ngIf="(form.profile.touched || submitted && form.profile.errors)" class="invalid-feedback">
+                                <div *ngIf="addDeliveryBoy.controls.profile.invalid">
+                                    <div *ngIf="form.profile.errors.required">Profile is required</div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="col-md-12 d-flex justify-content-end">
+                            <button class="btn btn-secondary btn-rounded mr-2" type="reset"
+                                (click)="onReset()">Reset</button>
+                            <button class="btn btn-primary btn-rounded" type="submit" click>Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

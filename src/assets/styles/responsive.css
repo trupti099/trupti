@@ -1,0 +1,15 @@
+@media only screen and (min-width:1920px)
+{
+  .edit-modal .modal-dialog .modal-content .modal-body {height: 806px!important;}
+}
+
+@media only screen and (min-width:1199px) and (max-width:1366px)
+{
+    .edit-modal .modal-dialog .modal-content .modal-body {height: 494px!important;}
+}
+
+@media only screen and (min-width:992px) and (max-width:1199px){}
+
+@media only screen and (min-width:768px) and (max-width:991px){}
+
+@media only screen and (max-width:767px){}

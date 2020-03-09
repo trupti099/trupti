@@ -1,0 +1,116 @@
+/*General CSS Start*/
+@font-face {font-family: ProximaNovaAltBlRegular;src: url(./assets/fonts/ProximaNovaAltBlRegular.ttf);}
+@font-face {font-family: ProximaNovaAltCnLtBold;src: url(./assets/fonts/ProximaNovaAltCnLtBold.ttf);}
+@font-face {font-family: ProximaNovaAltRgBold;src: url(./assets/fonts/ProximaNovaAltRgBold.ttf);}
+@font-face {font-family: ProximaNovaAltRgRegular;src: url(./assets/fonts/ProximaNovaAltRgRegular.ttf);}
+@font-face {font-family: ProximaNovaScOsfThRegular;src: url(./assets/fonts/ProximaNovaScOsfThRegular.ttf);}
+@font-face {font-family: ProximaNovaThThin;src: url(./assets/fonts/ProximaNovaThThin.ttf);}
+.la-1-5x {font-size: 18px;}
+body{overflow-y: auto;}
+button:focus{outline: unset;}
+.form-control {border: initial;outline: initial !important;background: transparent;border-bottom: 1px solid #828c96;color: #828c96;border-radius: 0;padding-left: 0;font-size: 12px;}
+.form-group label{font-size: 14px;color: #828c96;}
+.form-control:focus,.custom-select:focus{box-shadow: unset;border-color: rgba(140, 140, 140, 0.5);}
+.form-control.rounded, .form-control.form-control-rounded {border-radius: 0;}
+.custom-select{border-width: 0 0 1px 0;border-color: #828c96;border-radius: 0px;padding-left: 0px;font-size: 12px;}
+.btn-secondary {color: #fff;background-color: #828c96;}
+.height-100vh{height: 100vh;}
+.primary{color: #ff6476;}
+.secondry{color: #828c96;}
+.primary-bg{background-color: #ff6476;}
+.seconadry-bg{background-color: #828c96;}
+.shadow-0{box-shadow: unset!important;}
+h4, .h4 {font-size: 20px;}
+.card-title{font-size: 18px;}
+.avatar{width: 36px;height: 36px;border-radius: 50%;}
+.modal-body p{font-size: 12px;}
+.layout-sidebar-large .sidebar-left-secondary .childNav li.nav-item a.open i {color: #ff6476;}
+.layout-sidebar-large .sidebar-left .navigation-left .nav-item.active .triangle {position: absolute;width: 0;height: 100%;top: 0;left: 0;border-left: 5px solid;border-width: 5px;border-color: transparent transparent transparent #ff6476;}
+.layout-sidebar-large .sidebar-left .navigation-left .nav-item .nav-item-hold .nav-text{font-size: 12px;}
+.layout-sidebar-large .sidebar-left .navigation-left .nav-item .nav-item-hold{ padding: 15px 0;}
+.layout-sidebar-large .sidebar-left-secondary{z-index: 101;}
+.example-header{min-height: 40px!important;line-height: 30px;}
+.dropdown-item:hover, .dropdown-item:focus{color: #fff;background-color: #ff6476;}
+.general-btn{margin-right: 0;border-radius: 50%;width: 35px;height: 35px;text-align: center;padding: 0;color: #fff!important;display: flex;align-items: center;justify-content: center;}
+.user{cursor: pointer;}
+.separator-breadcrumb {margin-bottom: 1.5rem;}
+.mat-paginator-container{justify-content: space-between!important;}
+.mat-table {font-family: "Nunito", sans-serif!important;}
+.mat-header-cell {font-size: 14px!important;font-weight: 700!important;}
+.mat-cell, .mat-footer-cell {font-size: 12px!important;}
+.mat-form-field.mat-focused .mat-form-field-label {color: #ff6476!important;}
+.mat-form-field.mat-focused .mat-form-field-ripple,.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {background-color: #ff6476!important;}
+.mat-input-element {caret-color: #828c96;}
+.mat-select-arrow {color: #828c96!important;}
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {color: #fff!important;}
+.mat-column-number, .mat-column-state{max-width: unset!important;}
+.ngb-dp-header,.ngb-dp-week.bg-light {background-color: #828c96 !important;color: #fff!important;}
+.ngb-dp-week.bg-light .ngb-dp-weekday{color: #fff!important;}
+.ngb-dp-arrow button{transform: rotate(-180deg);color: #fff!important;}
+.ngb-dp-arrow.right button{transform: unset;}
+.file-droppa-btns,.file-progress{display: none!important;}
+.file_dropZone_internal{height: 150px!important;}
+
+::-webkit-scrollbar {width: 8px;}
+::-webkit-scrollbar-track {background: transparent;}   
+::-webkit-scrollbar-thumb {background: #ccc;border-radius: 10px;}  
+::-webkit-scrollbar-thumb:hover {background: #555;}
+
+.layout-sidebar-large .main-header{height: 60px;z-index: 999;}
+.layout-sidebar-large .sidebar-left-secondary, .layout-sidebar-large .sidebar-left{top: 60px;height: calc(100vh - 60px);}
+.main-content-wrap{margin-top: 60px;min-height: calc(100vh - 60px);}
+.main-content-wrap.sidenav-open {width: calc(100% - 100px);}
+.layout-sidebar-large .sidebar-left .navigation-left,.layout-sidebar-large .main-header .logo{width: 100px;}
+.layout-sidebar-large .sidebar-left-secondary.open {left: 100px;}
+/*General CSS Over*/
+
+/* Login CSS Start */
+.auth-logo img {width: 75px;height: 75px;}
+.auth-layout-wrap .auth-content{/* min-width: 550px; */min-width: 100%;width: 100%;max-width: 100%;height: 100vh;}
+.auth-layout-wrap .auth-content .card{border-radius: 0;}
+.auth-layout-wrap .auth-content .auth-right-main{background-size: cover;background-image: url(./assets/images/delivery-on-time.jpg);background-position: center;height:100vh;width: 100%;background-repeat: no-repeat;}
+.auth-layout-wrap .auth-content .auth-right-main .auth-right{align-items: flex-end;justify-content: flex-start;}
+.auth-layout-wrap .auth-content .auth-right-main .auth-right .title{font-family: 'ProximaNovaScOsfThRegular';position: relative;}
+.auth-layout-wrap .auth-content .auth-right-main .auth-right .title:after{position: absolute;bottom: 0;right: 0;background: linear-gradient(to right,#ef3a33,#828c96);height: 5px;width: 360px;content: "";}
+.auth-layout-wrap .auth-content .auth-right-main .auth-right .short-dec{width: 30%;text-align: right;font-size: 14px;color: #fff;font-family: ProximaNovaAltRgRegular;}
+.auth-layout-wrap .auth-content .auth-left-main{background-color: #f2f2f2;display: flex;flex-direction: column;justify-content: space-between;}
+.auth-layout-wrap .auth-content .form-control{border-bottom: 1px solid #828c96;padding-left: 2rem;}
+.auth-layout-wrap .auth-content .form-control:focus{border-color: #ef3a33;background-color: transparent;}
+.auth-layout-wrap .auth-content .form-group label{font-size: 16px;}
+.auth-layout-wrap{background-position: center;}
+.login-btn{height: 45px;background: #828c96;border-color: #828c96;}
+.login-btn:hover,.login-btn:active{background: #9ca8b5!important;border-color: #9ca8b5!important;}
+.login-btn:focus{box-shadow: 0 0 0 0.2rem rgb(137, 148, 160)}
+.has-icon-left .form-control-position{position: absolute;top: 0px;left: -5px;z-index: 2;display: block;width: 2rem;height: 2rem;line-height: 2.4rem;text-align: center;}
+.has-icon-left .form-control-position i{color: #000000;font-size: 16px;}
+.powerd-by{height: 50px;/* background-color: #39374e; */color:#828c96;text-align: left;line-height: 50px;/* position: fixed;bottom: 0;left: 0;right: 0; */}
+.powerd-by a{color:#828c96;}
+/* Login CSS Over */
+
+/* Edit Modal CSS Start */
+.modal-backdrop{background-color: #000000;}
+.edit-modal.fade .modal-dialog{-webkit-transform: translate(0, 0);transform: translate(0, 0)!important;}
+.edit-modal{left: unset;height: 100vh;}
+.edit-modal .modal-dialog{margin: 0;border-radius: 0;-webkit-transform: translate(100%, 0);transform: translate(100%, 0)!important;}
+.edit-modal .modal-dialog .modal-content{margin: 0;border-radius: 0;}
+.edit-modal .modal-dialog .modal-content .modal-body{height: 590px;overflow: auto;}
+.date-icon{background: transparent;color: #828c96;border-color: transparent!important;border-bottom: 1px solid #828c96!important;border-radius: 0;}
+/* Edit Modal CSS Over */
+
+/* Datatable CSS Start */
+.example-container {position: relative;min-height: 360px;max-height: 360px;overflow: auto;white-space: nowrap;}
+.example-table-container {position: relative;max-height: 400px;overflow: auto;}
+table {width: 100%;}
+.example-loading-shade {position: absolute;top: 0;left: 0;bottom: 56px;right: 0;background: rgba(0, 0, 0, 0.15);z-index: 1;display: flex;align-items: center;justify-content: center;}
+.example-rate-limit-reached {color: #980000;max-width: 360px;text-align: center;}
+.mat-column-number,.mat-column-state {max-width: 64px;}
+.mat-column-created {max-width: 124px;}
+.mat-paginator-sticky {bottom: 0px;position: sticky;z-index: 10;}
+.address-field {width: 160px;overflow: hidden;text-overflow: ellipsis;margin-right: 10px;}
+/* Datatable CSS Over */
+
+/* Dashboard CSS Start */
+.card-icon-bg-primary [class^="i-"] {color: rgba(255, 100, 118, 0.8);}
+/* Dashboard CSS Over */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

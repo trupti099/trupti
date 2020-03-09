@@ -1,0 +1,118 @@
+<div class="">
+    <div class="breadcrumb mb-2">
+        <h4>Dashboard</h4>
+        <!-- <ul>
+            <li><a href="">Dashboard</a></li>
+            <li>Version 1</li>
+        </ul> -->
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="row">
+        <!-- ICON BG -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Administrator"></i>
+                    <div class="content" style="max-width: 120px;">
+                        <p class="text-muted mt-2 mb-0">Total POS</p>
+                        <p class="text-primary text-24 line-height-1 mb-2">205</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Ticket"></i>
+                    <div class="content" style="max-width: 120px;">
+                        <p class="text-muted mt-2 mb-0">Support tickets</p>
+                        <p class="text-primary text-24 line-height-1 mb-2">100</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Box-Full"></i>
+                    <div class="content" style="max-width: 120px;">
+                        <p class="text-muted mt-2 mb-0">Total Parcels</p>
+                        <p class="text-primary text-24 line-height-1 mb-2">480</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Money-2"></i>
+                    <div class="content" style="max-width: 120px;">
+                        <p class="text-muted mt-2 mb-0">Account credit</p>
+                        <p class="text-primary text-24 line-height-1 mb-2">1200</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title mb-0">Recent 5 registered POS</div>
+                    <app-recent-registered-pos></app-recent-registered-pos>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title mb-0">Recent raised tickets</div>
+                    <app-recent-raised-tickets></app-recent-raised-tickets>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title mb-0">Recent customers</div>
+                    <app-recent-customers></app-recent-customers>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title mb-0">Recent parcels</div>
+                    <app-recent-parcels></app-recent-parcels>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="row">
+        <div class="col-lg-8 col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title">This Year Sales</div>
+                    <div echarts [options]="salesChartBar" [autoResize]="true" style="height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-title">Sales by Countries</div>
+                    <div echarts [options]="salesChartPie" [autoResize]="true" style="height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

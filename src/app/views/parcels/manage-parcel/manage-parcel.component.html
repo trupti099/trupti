@@ -1,0 +1,458 @@
+<mat-horizontal-stepper linear #matHorizontalStepper>
+    <mat-step [stepControl]="addCustomerForm" [completed]="senderStepDone">
+        <ng-template matStepLabel>Sender</ng-template>
+        <form [formGroup]="addCustomerForm">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="example-header px-0 py-0 d-flex justify-content-end md-2">
+
+
+                        <div class="d-flex">
+                            <input class="form-control" (keyup)="applyFilter($event.target.value)" name="searchPhoneNo"
+                                id="txt-search" placeholder="Search phone no.">
+
+                            <i class="search-icon text-muted i-Magnifi-Glass1"></i>
+                        </div>
+                    </div>
+                   
+                    <div>
+                        <ul  id="filter-records"> </ul>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Name</label>
+                            <input type="text" formControlName="name" class="form-control" id="senderName"
+                                placeholder="Enter name of sender" [ngClass]="{'is-invalid': submitted &&  fc.name.errors ||
+                                                                                fc.name.touched && fc.name.invalid}" />
+                            <div *ngIf="( fc.name.touched || submitted && fc.name.errors)" class="invalid-feedback">
+                                <div *ngIf="addCustomerForm.controls.name.invalid">
+                                    <div *ngIf=" fc.name.errors.required">Name is required</div>
+                                    <div *ngIf=" fc.name.errors.pattern">Name is invalid</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Select country</label>
+                            <select class="custom-select" formControlName="country" id="country"
+                                (change)="onChangeCountry($event.target.value)"
+                                [ngClass]="{'is-invalid': submitted && fc.country.errors || fc.country.touched && fc.country.invalid}">
+                                <option disabled selected value="">Select country</option>
+                                <option *ngFor="let country of countries" [value]="country.id">{{country.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="( fc.country.touched || submitted && fc.country.errors)"
+                                class="invalid-feedback">
+                                <div *ngIf="addCustomerForm.controls.country.invalid">
+                                    <div *ngIf=" fc.country.errors.required">Country is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Select state</label>
+                            <select class="custom-select" formControlName="state" id="state"
+                                (change)="onChangeState($event.target.value)"
+                                [ngClass]="{'is-invalid': submitted && fc.state.errors || fc.state.touched && fc.state.invalid}">
+                                <option disabled selected value="">Select state </option>
+                                <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                            </select>
+                            <div *ngIf="( fc.state.touched || submitted && fc.state.errors)" class="invalid-feedback">
+                                <div *ngIf="addCustomerForm.controls.state.invalid">
+                                    <div *ngIf=" fc.state.errors.required">State is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Select city</label>
+                            <select class="custom-select" formControlName="city" id="city"
+                                [ngClass]="{'is-invalid': submitted && fc.city.errors || fc.city.touched && fc.city.invalid}">
+                                <option disabled selected value="">Select city</option>
+                                <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+                            </select>
+                            <div *ngIf="( fc.city.touched || submitted && fc.city.errors)" class="invalid-feedback">
+                                <div *ngIf="addCustomerForm.controls.city.invalid">
+                                    <div *ngIf=" fc.city.errors.required">City is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Address</label>
+                            <textarea formControlName="address" id="senderAddress" rows="1" class="form-control"
+                                placeholder="Enter address"
+                                [ngClass]="{'is-invalid': submitted && fc.address.errors || fc.address.touched && fc.address.invalid}"></textarea>
+                            <div *ngIf="( fc.address.touched || submitted && fc.address.errors)"
+                                class="invalid-feedback">
+                                <div *ngIf="addCustomerForm.controls.address.invalid">
+                                    <div *ngIf=" fc.address.errors.required">Address is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Email</label>
+                            <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="example@gmail.com"
+                                [ngClass]="{'is-invalid': submitted && fc.email.errors || fc.email.touched && fc.email.invalid }">
+                            <div *ngIf="( fc.email.touched || submitted && fc.email.errors)" class="invalid-feedback">
+                                <div *ngIf="addCustomerForm.controls.email.invalid">
+                                    <div *ngIf=" fc.email.errors.required">Email is required</div>
+                                    <div *ngIf=" fc.email.errors.email">Email must be a valid format</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Contact</label>
+                            <input class="form-control" formControlName="phoneNo" id="senderPhoneNo"
+                                placeholder="9101234567"
+                                [ngClass]="{'is-invalid': submitted && fc.phoneNo.errors || fc.phoneNo.touched && fc.phoneNo.invalid}">
+                            <div *ngIf="( fc.phoneNo.touched || submitted && fc.phoneNo.errors)"
+                                class="invalid-feedback">
+                                <div *ngIf="addCustomerForm.controls.phoneNo.invalid">
+                                    <div *ngIf=" fc.phoneNo.errors.required">Phone number is required</div>
+                                    <div *ngIf=" fc.phoneNo.errors.pattern">Phone number must be 10 digits</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-end">
+                            <button class="btn btn-secondary btn-rounded mr-2" type="reset"
+                                (click)="onReset()">Reset</button>
+
+                            <button class="btn btn-primary btn-rounded" type="submit"
+                                (click)="senderForm(matHorizontalStepper)">Next</button>
+                            <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+                                    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+                                </button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div>
+                <button mat-button matStepperNext>Next</button>
+            </div> -->
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="addReceiverForm" [completed]="receiverStepDone">
+        <ng-template matStepLabel>Receiver</ng-template>
+        <form [formGroup]="addReceiverForm">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Name</label>
+                            <input type="text" formControlName="name" class="form-control" id="reciverName"
+                                placeholder="Enter name of receiver"
+                                [ngClass]="{'is-invalid': submitted &&  fr.name.errors ||
+                                                                                 fr.name.touched &&  fr.name.invalid}" />
+                            <div *ngIf="( fr.name.touched || submitted &&  fr.name.errors)" class="invalid-feedback">
+                                <div *ngIf="addReceiverForm.controls.name.invalid">
+                                    <div *ngIf=" fr.name.errors.required">Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Select country</label>
+                            <select class="custom-select" formControlName="country"
+                                (change)="onChangeCountry($event.target.value)"
+                                [ngClass]="{'is-invalid': submitted &&  fr.country.errors ||  fr.country.touched &&  fr.country.invalid}">
+                                <option disabled value="">Select country</option>
+                                <option *ngFor="let country of countries" [value]="country.id">
+                                    {{country.name}}</option>
+                            </select>
+                            <div *ngIf="( fr.country.touched || submitted &&  fr.country.errors)"
+                                class="invalid-feedback">
+                                <div *ngIf="addReceiverForm.controls.country.invalid">
+                                    <div *ngIf=" fr.country.errors.required">Country is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Select state</label>
+                            <select class="custom-select" formControlName="state"
+                                (change)="onChangeState($event.target.value)"
+                                [ngClass]="{'is-invalid': submitted &&  fr.state.errors ||  fr.state.touched &&  fr.state.invalid}">
+                                <option disabled value="">Select state</option>
+                                <option *ngFor="let state of states" [value]="state.id">{{state.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="( fr.state.touched || submitted &&  fr.state.errors)" class="invalid-feedback">
+                                <div *ngIf="addReceiverForm.controls.state.invalid">
+                                    <div *ngIf=" fr.state.errors.required">State is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Select city</label>
+                            <select class="custom-select" formControlName="city"
+                                [ngClass]="{'is-invalid': submitted &&  fr.city.errors ||  fr.city.touched &&  fr.city.invalid}">
+                                <option disabled value="">Select city</option>
+                                <option *ngFor="let city of cities" [value]="city.id">{{city.name}}
+                                </option>
+                            </select>
+                            <div *ngIf="( fr.city.touched || submitted &&  fr.city.errors)" class="invalid-feedback">
+                                <div *ngIf="addReceiverForm.controls.city.invalid">
+                                    <div *ngIf=" fr.city.errors.required">City is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Address</label>
+                            <textarea formControlName="address" id="address" rows="1" class="form-control"
+                                placeholder="Enter address"
+                                [ngClass]="{'is-invalid': submitted &&  fr.address.errors ||  fr.address.touched &&  fr.address.invalid}"></textarea>
+                            <div *ngIf="( fr.address.touched || submitted &&  fr.address.errors)"
+                                class="invalid-feedback">
+                                <div *ngIf="addReceiverForm.controls.address.invalid">
+                                    <div *ngIf=" fr.address.errors.required">Address is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Email</label>
+                            <input type="email" formControlName="email" class="form-control" id="reciverEmail"
+                                aria-describedby="emailHelp" placeholder="example@gmail.com"
+                                [ngClass]="{'is-invalid': submitted &&  fr.email.errors ||  fr.email.touched &&  fr.email.invalid }">
+                            <div *ngIf="( fr.email.touched || submitted &&  fr.email.errors)" class="invalid-feedback">
+                                <div *ngIf="addReceiverForm.controls.email.invalid">
+                                    <div *ngIf=" fr.email.errors.required">Email is required</div>
+                                    <div *ngIf=" fr.email.errors.email">Email must be a valid format</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 form-group mb-4">
+                            <label>Contact</label>
+                            <input class="form-control" formControlName="phoneNo" id="reciverPhoneNo"
+                                placeholder="9101234567"
+                                [ngClass]="{'is-invalid': submitted &&  fr.phoneNo.errors ||  fr.phoneNo.touched &&  fr.phoneNo.invalid}">
+                            <div *ngIf="( fr.phoneNo.touched || submitted &&  fr.phoneNo.errors)"
+                                class="invalid-feedback">
+                                <div *ngIf="addReceiverForm.controls.phoneNo.invalid">
+                                    <div *ngIf=" fr.phoneNo.errors.required">Phone number is required
+                                    </div>
+                                    <div *ngIf=" fr.phoneNo.errors.pattern">Phone number must be 10 digits
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 d-flex justify-content-end">
+                            <button class="btn btn-secondary btn-rounded mr-2" type="reset"
+                                (click)="onReset()">Reset</button>
+
+                            <button matStepperNext class="btn btn-primary btn-rounded"
+                                (click)="receiverForm(matHorizontalStepper)" type="submit" click>Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div> -->
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="addParcelForm" [completed]="parcelStepDone">
+        <ng-template matStepLabel>Parcel</ng-template>
+        <form [formGroup]="addParcelForm">
+            <div class="row">
+                <div class="col-md-4 form-group mb-4">
+                    <label>Sender</label>
+                    <input type="text" formControlName="senderId" class="form-control" id="senderId"
+                        placeholder="Enter Id of sender " [ngClass]="{'is-invalid': submitted && f.senderId.errors ||
+                                                                        f.senderId.touched && f.senderId.invalid}" />
+                    <div *ngIf="(f.senderId.touched || submitted && f.senderId.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.senderId.invalid">
+                            <div *ngIf="f.senderId.errors.required">Sender is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Sender Name</label>
+                    <input type="text" formControlName="senderName" class="form-control" id="pSenderName"
+                        placeholder="Enter name of sender"
+                        [ngClass]="{'is-invalid': submitted && f.senderName.errors ||
+                                                                        f.senderName.touched && f.senderName.invalid}" />
+                    <div *ngIf="(f.senderName.touched || submitted && f.senderName.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.senderName.invalid">
+                            <div *ngIf="f.senderName.errors.required">Sender Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Sender Contact</label>
+                    <input class="form-control" formControlName="senderPhoneNo" id="pSenderPhoneNo"
+                        placeholder="9101234567"
+                        [ngClass]="{'is-invalid': submitted && f.senderPhoneNo.errors || f.senderPhoneNo.touched && f.senderPhoneNo.invalid}">
+                    <div *ngIf="(f.senderPhoneNo.touched || submitted && f.senderPhoneNo.errors)"
+                        class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.senderPhoneNo.invalid">
+                            <div *ngIf="f.senderPhoneNo.errors.required">Sender phone number is required
+                            </div>
+                            <div *ngIf="f.senderPhoneNo.errors.pattern">Sender phone number must be 10
+                                digits
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Receiver</label>
+                    <input type="text" formControlName="receiverId" class="form-control" id="receiverId"
+                        placeholder="Enter Id of sender "
+                        [ngClass]="{'is-invalid': submitted && f.receiverId.errors ||
+                                                                        f.receiverId.touched && f.receiverId.invalid}" />
+                    <div *ngIf="(f.receiverId.touched || submitted && f.receiverId.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.receiverId.invalid">
+                            <div *ngIf="f.receiverId.errors.required">Receiver is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Receiver Name</label>
+                    <input type="text" formControlName="receiverName" class="form-control" id="pReceiverName"
+                        placeholder="Enter name of receiver"
+                        [ngClass]="{'is-invalid': submitted && f.receiverName.errors ||
+                                                                        f.receiverName.touched && f.receiverName.invalid}" />
+                    <div *ngIf="(f.receiverName.touched || submitted && f.receiverName.errors)"
+                        class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.receiverName.invalid">
+                            <div *ngIf="f.receiverName.errors.required">Receiver Name is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Receiver Contact</label>
+                    <input class="form-control" formControlName="receiverPhoneNo" id="pReceiverPhoneNo"
+                        placeholder="9101234567"
+                        [ngClass]="{'is-invalid': submitted && f.receiverPhoneNo.errors || f.receiverPhoneNo.touched && f.receiverPhoneNo.invalid}">
+                    <div *ngIf="(f.receiverPhoneNo.touched || submitted && f.receiverPhoneNo.errors)"
+                        class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.receiverPhoneNo.invalid">
+                            <div *ngIf="f.receiverPhoneNo.errors.required">Receiver phone number is
+                                required</div>
+                            <div *ngIf="f.receiverPhoneNo.errors.pattern">Receiver phone number must be
+                                10
+                                digits
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Center</label>
+                    <select class="custom-select" formControlName="center"
+                        [ngClass]="{'is-invalid': submitted && f.center.errors || f.center.touched && f.center.invalid}">
+                        <option disabled value="">Select center</option>
+                        <option value="rajkot">Rajkot</option>
+                        <option value="baroda">baroda</option>
+                        <option value="Porbandar">Porbandar</option>
+                    </select>
+                    <div *ngIf="(f.center.touched || submitted && f.center.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.center.invalid">
+                            <div *ngIf="f.center.errors.required">Center is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Package Type</label>
+                    <select class="custom-select" formControlName="packageType"
+                        [ngClass]="{'is-invalid': submitted && f.packageType.errors || f.packageType.touched && f.packageType.invalid}">
+                        <option disabled value="">Select packageType</option>
+                        <option value="paper">paper</option>
+                        <option value="luggage">luggage</option>
+                    </select>
+                    <div *ngIf="(f.packageType.touched || submitted && f.packageType.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.packageType.invalid">
+                            <div *ngIf="f.packageType.errors.required">Package type is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Bar Code No.</label>
+                    <input type="text" formControlName="barCodeNo" class="form-control" id="exampleInputbarCodeNo1"
+                        placeholder="FFC12212323"
+                        [ngClass]="{'is-invalid': submitted && f.barCodeNo.errors || f.barCodeNo.touched && f.barCodeNo.invalid }">
+                    <div *ngIf="(f.barCodeNo.touched || submitted && f.barCodeNo.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.barCodeNo.invalid">
+                            <div *ngIf="f.barCodeNo.errors.required">Bar Code No. is required</div>
+                            <div *ngIf="f.barCodeNo.errors.barCodeNo">Bar Code No. must be a valid
+                                format</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Weight</label>
+                    <input type="text" formControlName="weight" class="form-control" id="weight"
+                        placeholder="Enter weight"
+                        [ngClass]="{'is-invalid': submitted && f.weight.errors || f.weight.touched && f.weight.invalid }">
+                    <div *ngIf="(f.weight.touched || submitted && f.weight.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.weight.invalid">
+                            <div *ngIf="f.weight.errors.required">Weight is required</div>
+                            <div *ngIf="f.weight.errors.pattern">Weight must be a valid format</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Amount</label>
+                    <input type="text" formControlName="amount" class="form-control" id="amount"
+                        placeholder="Enter amount"
+                        [ngClass]="{'is-invalid': submitted && f.amount.errors || f.amount.touched && f.amount.invalid }">
+                    <div *ngIf="(f.amount.touched || submitted && f.amount.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.amount.invalid">
+                            <div *ngIf="f.amount.errors.required">Amount is required</div>
+                            <div *ngIf="f.amount.errors.amount">Amount must be a valid format</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Charge</label>
+                    <input type="text" formControlName="charge" class="form-control" id="charge"
+                        placeholder="Enter charge"
+                        [ngClass]="{'is-invalid': submitted && f.charge.errors || f.charge.touched && f.charge.invalid }">
+                    <div *ngIf="(f.charge.touched || submitted && f.charge.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.charge.invalid">
+                            <div *ngIf="f.charge.errors.required">Charge is required</div>
+                            <div *ngIf="f.charge.errors.charge">Charge must be a valid format</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Other Charge</label>
+                    <input type="text" formControlName="otherCharge" class="form-control" id="otherCharge"
+                        placeholder="Enter other charge"
+                        [ngClass]="{'is-invalid': submitted && f.otherCharge.errors || f.otherCharge.touched && f.otherCharge.invalid }">
+                    <div *ngIf="(f.otherCharge.touched || submitted && f.otherCharge.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.otherCharge.invalid">
+                            <div *ngIf="f.otherCharge.errors.required">Other charge is required</div>
+                            <div *ngIf="f.otherCharge.errors.otherCharge">Other charge must be a valid
+                                format
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group mb-4">
+                    <label>Remark</label>
+                    <input type="text" formControlName="remark" class="form-control" id="remark"
+                        placeholder="Enter remark"
+                        [ngClass]="{'is-invalid': submitted && f.remark.errors || f.remark.touched && f.remark.invalid }">
+                    <div *ngIf="(f.remark.touched || submitted && f.remark.errors)" class="invalid-feedback">
+                        <div *ngIf="addParcelForm.controls.remark.invalid">
+                            <div *ngIf="f.remark.errors.required">Remark is required</div>
+                            <div *ngIf="f.remark.errors.remark">Remark must be a valid format</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 d-flex justify-content-end">
+                    <button class="btn btn-secondary btn-rounded mr-2" type="reset" (click)="onReset()">Reset</button>
+
+                    <button class="btn btn-primary btn-rounded" (click)="parcelFrom(matHorizontalStepper)" type="submit"
+                        matStepperNext click>Next</button>
+                </div>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [completed]="finalStep">
+        <ng-template matStepLabel>Receipt</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

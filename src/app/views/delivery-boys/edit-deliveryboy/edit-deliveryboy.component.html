@@ -1,0 +1,127 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit POS</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true" class="las la-times la-1-5x secondry"></span>
+    </button>
+</div>
+<form [formGroup]="editUser" (ngSubmit)="onSubmit()" class="needs-validation">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow-0">
+                    <div class="card-body py-0">
+                        <!-- <div class="card-title mb-3">Form Inputs</div> -->
+                        <div class="row">
+                            <div class="col-md-12 form-group mb-4">
+                                <label>First Name</label>
+                                <input type="text" formControlName="firstName" class="form-control" id="firstName"
+                                    placeholder="Enter firstName of PSP"
+                                    [ngClass]="{'is-invalid': submitted && f.firstName.errors || f.firstName.touched && f.firstName.invalid}" />
+                                <div *ngIf="(f.firstName.touched || submitted && f.firstName.errors)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="editUser.controls.firstName.invalid">
+                                        <div *ngIf="f.firstName.errors.required">First name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group mb-4">
+                                <label>Last name</label>
+                                <input type="text" formControlName="lastName" class="form-control" id="lastName"
+                                    placeholder="Enter Last name"
+                                    [ngClass]="{'is-invalid':submitted && f.lastName.errors ||  f.lastName.touched && f.lastName.invalid}">
+                                <div *ngIf="(f.lastName.touched || submitted && f.lastName.errors)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="editUser.controls.lastName.invalid">
+                                        <div *ngIf="f.lastName.errors.required">Last name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 form-group mb-4">
+                                <label>Email</label>
+                                <input type="email" formControlName="email" class="form-control" id="email"
+                                    aria-describedby="emailHelp" placeholder="example@gmail.com"
+                                    [ngClass]="{'is-invalid':submitted && f.email.errors || f.email.touched && f.email.invalid}">
+                                <div *ngIf="(f.email.touched || submitted && f.email.errors)" class="invalid-feedback">
+                                    <div *ngIf="editUser.controls.email.invalid">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-12 form-group mb-4">
+                            <label>Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                        </div>
+                        <div class="col-md-12 form-group mb-4">
+                            <label>Confirm password</label>
+                            <input type="password" class="form-control" id="c-password"
+                                placeholder="Enter confirm password">
+                        </div> -->
+                            <div class="col-md-12 form-group mb-4">
+                                <label>Contact</label>
+                                <input class="form-control" formControlName="phoneNo" id="phoneNo"
+                                    placeholder="9101234567"
+                                    [ngClass]="{'is-invalid':submitted && f.phoneNo.errors || f.phoneNo.touched && f.phoneNo.invalid}">
+                                <div *ngIf="(f.phoneNo.touched || submitted && f.phoneNo.errors)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="editUser.controls.phoneNo.invalid">
+                                        <div *ngIf="f.phoneNo.errors.required">Contect is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-12 form-group mb-4">
+                                <label>Profile</label>
+                                <fileDroppa name="image" [beforeAddFile]="beforeAddFile" (filesUpdated)="filesUpdated($event)"
+                                    (fileUploaded)="fileUploaded($event)">
+                                </fileDroppa>
+                                <div *ngIf="(f.image.touched || submitted && f.image.errors)" class="invalid-feedback">
+                                    <div *ngIf="editUser.controls.image.invalid">
+                                        <div *ngIf="f.image.errors.required">Image is required</div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-md-12 form-group mb-4">
+                                <label>Role</label>
+                                <select class="custom-select" formControlName="role"  [ngClass]="{'is-invalid':submitted && f.role.errors || f.role.touched && f.role.invalid}">
+                                    <option selected disabled>Select role</option>
+                                    <option>Account manager</option>
+                                    <option>Delivery boy</option>
+                                </select>
+                                <div *ngIf="(f.role.touched || submitted && f.role.errors)" class="invalid-feedback">
+                                    <div *ngIf="editUser.controls.role.invalid">
+                                        <div *ngIf="f.role.errors.required">Role is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 form-group mb-4">
+                                <label for="picker1">Birth date</label>
+                                <div class="input-group">
+                                    <input id="picker1" class="form-control" placeholder="yyyy-mm-dd" formControlName="datePicker"
+                                        ngbDatepicker #datePicker="ngbDatepicker" [ngClass]="{'is-invalid':submitted && f.datePicker.errors || f.datePicker.touched && f.datePicker.invalid}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary date-icon" (click)="datePicker.toggle()" type="button">
+                                            <i class="icon-regular i-Calendar-4"></i>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="(f.datePicker.touched || submitted && f.datePicker.errors)" class="invalid-feedback">
+                                        <div *ngIf="editUser.controls.datePicker.invalid">
+                                            <div *ngIf="f.datePicker.errors.required">Date is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="reset" class="btn btn-secondary btn-rounded mr-2" (click)="close()">Cancel</button>
+        <button class="btn btn-primary btn-rounded" type="submit">Save</button>
+    </div>
+</form>
